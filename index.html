@@ -7,21 +7,20 @@
     <title>Redirecionamento WhatsApp</title>
 </head>
 <body>
-    <a href="https://wa.link/7gl2zr" id="whatsappLink">Abrir WhatsApp</a>
-
     <script>
-        document.getElementById('whatsappLink').addEventListener('click', function(e) {
-            e.preventDefault();
+        // Array com os links de WhatsApp
+        const whatsappLinks = ['https://wa.link/7gl2zr', 'https://wa.link/13vfcu'];
+        
+        // Contador para alternar entre os links
+        let clickCount = 0;
 
-            // Alternar entre os dois links a cada clique
-            if (this.getAttribute('href') === 'https://wa.link/7gl2zr') {
-                this.setAttribute('href', 'https://wa.link/13vfcu');
-            } else {
-                this.setAttribute('href', 'https://wa.link/7gl2zr');
-            }
+        // Redirecionar imediatamente ao carregar a página
+        window.location.href = whatsappLinks[clickCount % whatsappLinks.length];
 
-            // Redirecionar para o link atual
-            window.location.href = this.getAttribute('href');
+        // Adicionar evento de clique para alternar entre os links
+        document.addEventListener('click', function() {
+            clickCount++;
+            window.location.href = whatsappLinks[clickCount % whatsappLinks.length];
         });
     </script>
 </body>
